@@ -56,7 +56,7 @@ def startDockerService(INSTANCE_URL, INSTANCE_USERNAME, BROWSER, AGENT_ID):
 		secretRef = docker.types.SecretReference(secret.id, secret.name, uid='1000', gid='1000')
 		secrets.append(secretRef)
 
-	restart_policy = docker.types.RestartPolicy('any', 0, 1, 60000000000)
+	restart_policy = docker.types.RestartPolicy('any', 1, 5, 0)
 
 	service = client.services.create(IMAGE_NAME, env=env, secrets=secrets, restart_policy=restart_policy)
 

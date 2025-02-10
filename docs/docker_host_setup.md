@@ -74,7 +74,7 @@ rm clientkeypair.p12
 ```
 [Service]
 ExecStart=
-ExecStart=/usr/bin/dockerd -H tcp://0.0.0.0:2376"
+ExecStart=/usr/bin/dockerd -H fd:// -H tcp://0.0.0.0:2376"
 ```
 
 3. Run

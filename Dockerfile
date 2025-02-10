@@ -36,12 +36,12 @@ RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo ap
 
 # Install Robot Framework
 RUN pip install --upgrade pip && \
-    pip install robotframework webdrivermanager robotframework-seleniumlibrary webdrivermanager robotframework-requests
+    pip install robotframework robotframework-seleniumlibrary robotframework-requests
 
-# Configure RobotFramework
-RUN webdrivermanager firefox chrome --linkpath /usr/local/bin && \
-    chown -R ${user}:${user} ${SERVICENOW_HOME} && \
-    rm -f ${CHROME_RELEASE}.deb && PATH=$PATH:${SERVICENOW_HOME}/.local/bin
+# Configure RobotFramework - should be in PATH so may not be needed
+#RUN webdrivermanager firefox chrome --linkpath /usr/local/bin && \
+#    chown -R ${user}:${user} ${SERVICENOW_HOME} && \
+#    rm -f ${CHROME_RELEASE}.deb && PATH=$PATH:${SERVICENOW_HOME}/.local/bin
 
 COPY robot.robot $SERVICENOW_HOME
 
